@@ -1,7 +1,10 @@
 import "./App.css";
 
 import { Redirect, Route, Switch } from "react-router-dom";
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import {
+  auth,
+  createUserProfileDocument,
+} from "./firebase/firebase.utils";
 
 import CheckoutPage from "./pages/checkout/checkout.component";
 import { Component } from "react";
@@ -29,9 +32,8 @@ class App extends Component {
             ...snapShot.data(),
           });
         });
-      } else {
-        setCurrentUser(userAuth);
       }
+      setCurrentUser(userAuth);
     });
   }
 
