@@ -6,7 +6,6 @@ import {
   googleProvider,
 } from "../../firebase/firebase.utils";
 import {
-  emailSignInStart,
   signInFailure,
   signInSuccess,
   signOutFailure,
@@ -72,8 +71,6 @@ export function* signUp({ payload: { displayName, email, password } }) {
   try {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
     yield put(signUpSuccess({ user, additionalData: { displayName } }));
-    // yield createUserProfileDocument(user, { displayName });
-    // yield put(emailSignInStart({ email, password }));
   } catch (error) {
     yield put(signUpFailure(error));
   }
